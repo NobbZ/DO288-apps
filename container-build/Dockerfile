@@ -8,7 +8,8 @@ LABEL io.openshift.expose-services="8080:http" \
       io.k8s.display-name="Apache HTTP Server" \
       io.openshift.tags="apache, httpd"
 
-RUN sed -i "s/Listen 80/Listen 8080/g" /etc/httpd/conf/httpd.conf
+RUN sed -i "s/Listen 80/Listen 8080/g" /etc/httpd/conf/httpd.conf \
+    && chmod -Rv g+rw /etc/httpd/logs
 
 USER 1001
 
